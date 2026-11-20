@@ -32,3 +32,25 @@ The basic parsing, metadata, question parsing, retrieval and abstention branches
 5. Save the resulting `results.csv`, `ablation_results.csv`, and any terminal output you wish to keep as the final run record. Do not commit your `.env` or API key.
 
 **Important:** The complete instructor runner and its public test corpus have not been executed in this workspace. The repository's README intentionally leaves benchmark scores unfilled until the real tests are run.
+
+## Verified full public evaluation — 20 November 2026
+
+GitHub Actions run: https://github.com/ALLE77-maker/FTEC5660-HW4/actions/runs/44711453228
+
+The GitHub-hosted Python 3.11 job successfully installed dependencies and executed
+`python public_test_check.py` and `python ablation.py` against all 40 public
+documents and 60 questions. The measured final pipeline results were:
+
+- 12/12 tables passed (mean cell score 100%).
+- 40/40 documents passed metadata and probe checks.
+- 60/60 query parses matched the public ground truth.
+- Recall@5: 46/46 answerable questions (100%).
+- Correct abstention: 14/14 unanswerable questions (100%).
+- Simulated public Tasks 1–3: 55.00/55.00 points.
+- No public document, parsing, retrieval or rejection failures.
+
+The job produced `public_test_summary.json`, `retrieval_public_results.csv`,
+`ablation_results.csv`, `ablation_errors.csv`, and text logs as a downloadable
+artifact. Task 4 end-to-end DeepSeek answer accuracy has **not** been measured.
+Configure the Actions secret `DEEPSEEK_API_KEY` and manually run
+`DeepSeek official 60-question grading` to generate `results.csv`.
