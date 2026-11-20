@@ -1,0 +1,41 @@
+name: DeepSeek official 60-question grading
+
+on:
+  workflow_dispatch:
+
+jobs:
+  official-deepseek-test:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      DEEPSEEK_API_KEY: ${{ secrets.DEEPSEEK_API_KEY }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Confirm key is configured (do not print it)
+        run: |
+          if [ -z "$DEEPSEEK_API_KEY" ]; then
+            echo "::error::Add repository Actions secret DEEPSEEK_API_KEY before running."
+            exit 1
+          fi
+      - name: Install dependencies
+        run: python -m pip install -r requirements.txt
+      - name: Run instructor official generator and grader
+        run: python hw4.py --data-folder public_test > deepseek_grade_log.txt 2>&1
+      - name: Print grade, not secret
+        if: always()
+        run: |
+          if [ -f deepseek_grade_log.txt ]; then
+            cat deepseek_grade_log.txt
+          fi
+      - name: Save answers and scoring log
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hw4-deepseek-end-to-end-results
+          path: |
+            results.csv
+            deepseek_grade_log.txt
+          if-no-files-found: warn
