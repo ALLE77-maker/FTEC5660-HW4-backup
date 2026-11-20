@@ -1,0 +1,28 @@
+{
+  "source": "GitHub Actions run 44711453228, 2026-11-20 09:32:12 UTC",
+  "tests": {
+    "tables": 12,
+    "table_mean": 1,
+    "documents": 40,
+    "document_pass": 1,
+    "questions": 60,
+    "query_parse": 1,
+    "answerable": 46,
+    "unanswerable": 14,
+    "valid_nonempty": 1,
+    "recall_at_5": 1,
+    "answerable_kept": 1,
+    "unanswerable_rejected": 1,
+    "total_points_tasks_1_to_3": 55,
+    "max_points_tasks_1_to_3": 55,
+    "duration_seconds": 1.43
+  },
+  "errors": {
+    "table": [],
+    "document": [],
+    "query_parse": [],
+    "recall": [],
+    "abstention": []
+  },
+  "note": "DeepSeek end-to-end Task 4 not run; use the dedicated GitHub Actions workflow with the user's API key in repository secrets."
+}
