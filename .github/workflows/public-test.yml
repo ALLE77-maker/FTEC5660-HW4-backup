@@ -1,0 +1,40 @@
+name: Homework 4 public retrieval tests
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  public-evaluation:
+    runs-on: ubuntu-latest
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+      - name: Install requirements
+        run: python -m pip install -r requirements.txt
+      - name: Run public retrieval diagnostics
+        run: python public_test_check.py > public_test_log.txt 2>&1
+      - name: Run ablation study
+        run: python ablation.py > ablation_log.txt 2>&1
+      - name: Show results
+        if: always()
+        run: |
+          cat public_test_log.txt || true
+          cat ablation_log.txt || true
+      - name: Upload results
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: hw4-public-test-results
+          path: |
+            public_test_summary.json
+            retrieval_public_results.csv
+            ablation_results.csv
+            ablation_errors.csv
+            public_test_log.txt
+            ablation_log.txt
+          if-no-files-found: warn
