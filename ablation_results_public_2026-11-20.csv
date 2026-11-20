@@ -1,0 +1,9 @@
+variant,change,recall_at_5,answerable_kept,unanswerable_rejected,retrieval_or_abstention_errors,answer_accuracy
+B0,Naive whitespace BM25,0.326,1.000,0.000,45,
+V1,Preserve HTML table captions and cells,0.283,1.000,0.000,47,
+V2,Structure-aware chunks,0.196,1.000,0.000,51,
+V3,Exact metadata filtering,0.848,1.000,0.714,11,
+V4,Improved lexical tokenization,1.000,1.000,0.714,4,
+V5,Metric and section boosting,1.000,1.000,0.714,4,
+V6,Balanced comparison evidence,1.000,1.000,0.714,4,
+V7,Evidence-based abstention,1.000,1.000,1.000,0,
