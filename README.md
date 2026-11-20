@@ -44,7 +44,7 @@ The sample is synthetic and small. Public-set changes may not transfer to privat
 
 ### Reproducibility
 
-Python 3.10+; use the instructor's `requirements.txt`. No embedding model, hosted search, hard-coded corpus answers or additional API clients are used. A fresh runner builds its index from the supplied documents. The `ablation.py` experiment changes only feature switches in the student's code; the provided generator, scoring and main runner remain untouched. The `.env`, API key and any serialized index must stay out of Git. Run `python hw4.py --data-folder public_test` to generate `results.csv` and `python ablation.py --data-folder public_test --with-answers` to regenerate this report with actual response accuracy.
+Python 3.10+; use the instructor's `requirements.txt`. No embedding model, hosted search, hard-coded corpus answers or additional API clients are used. A fresh runner builds its index from the supplied documents. The `ablation.py` experiment changes only feature switches in the student's code; the provided generator, scoring and main runner remain untouched. The `.env`, API key and any serialized index must stay out of Git. Run `python hw4.py --data-folder public_test` to generate `results.csv` and `python ablation.py --data-folder public_test` to generate retrieval-only ablation measurements.
 
 ## Task 6: Reflection — Who do I want to be in the age of AI agents?
 
